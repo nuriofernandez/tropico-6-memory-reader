@@ -62,4 +62,17 @@ public:
         return memoryReader->ReadInt(win64Shipping + 0xDBC);
     }
 
+public:
+    void SetPopulation(int population) {
+        DWORD64 win64Shipping = GetWin64Shipping();
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0x03C530D0);
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0x30);
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0x8F0);
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0xF08);
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0x350);
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0x230);
+        win64Shipping = memoryReader->ReadDWORD(win64Shipping + 0x9D0);
+        return memoryReader->WriteInt(win64Shipping + 0xDBC, population);
+    }
+
 };
