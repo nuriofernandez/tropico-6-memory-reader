@@ -1,1 +1,1 @@
-x86_64-w64-mingw32-gcc -o main.exe main.c
+g++ main.cpp -o app.exe -static-libstdc++ -static-libgcc -m64 -march=x86-64

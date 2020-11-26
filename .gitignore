@@ -1,0 +1,6 @@
+# Clion
+cmake-build-debug
+.idea
+
+# Compiled executable
+app.exe
