@@ -11,8 +11,8 @@ int main() {
     float money = gameResources->GetMoney();
     printf("You have $%f.\n", money);
 
-    gameResources->SetMoney(money+150000);
-    printf("Now you have $%f.\n", money+150000);
+    int population = gameResources->GetPopulation();
+    printf("You have a population of %d tropicans.\n", population);
 
     return 0;
 }
