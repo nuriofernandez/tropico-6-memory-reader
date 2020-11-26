@@ -120,6 +120,12 @@ public:
         WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
     }
 
+
+public:
+    void WriteInt(DWORD64 pointerAddress, int value) {
+        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
 public:
     DWORD64 GetModuleBaseAddress(TCHAR *moduleName) {
         DWORD64 moduleBaseAddress = 0;
