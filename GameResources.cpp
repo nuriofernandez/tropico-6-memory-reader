@@ -50,6 +50,17 @@ private:
     }
 
 private:
+    DWORD64 GetSecondPlayerMoneyPointer() {
+        DWORD64 populationPointer = GetWin64Shipping();
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x03C6DFC0);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x8);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x8);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x280);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x318);
+        return populationPointer + 0x9D8;
+    }
+
+private:
     DWORD64 GetYearPointer() {
         DWORD64 yearPointer = GetWin64Shipping();
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
