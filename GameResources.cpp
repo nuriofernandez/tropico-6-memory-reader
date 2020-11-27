@@ -49,6 +49,15 @@ private:
         return populationPointer + 0xDBC;
     }
 
+private:
+    DWORD64 GetYearPointer() {
+        DWORD64 yearPointer = GetWin64Shipping();
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x148);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x508);
+        return yearPointer + 0x28;
+    }
+
 public:
     float GetMoney() {
         DWORD64 moneyPointer = GetMoneyPointer();
@@ -71,6 +80,12 @@ public:
     void SetPopulation(int population) {
         DWORD64 populationPointer = GetPopulationPointer();
         return memoryReader->WriteInt(populationPointer, population);
+    }
+
+public:
+    int GetYear() {
+        DWORD64 yearPointer = GetYearPointer();
+        return memoryReader->ReadInt(yearPointer);
     }
 
 };
