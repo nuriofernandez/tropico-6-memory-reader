@@ -127,7 +127,7 @@ public:
     }
 
 public:
-    DWORD64 GetModuleBaseAddress(TCHAR *moduleName) {
+    DWORD64 GetModuleBaseAddress(string moduleName) {
         DWORD64 moduleBaseAddress = 0;
         HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, procID);
         if (hSnapshot == INVALID_HANDLE_VALUE) throw -1;
@@ -136,7 +136,7 @@ public:
         moduleEntry32.dwSize = sizeof(MODULEENTRY32);
         if (Module32First(hSnapshot, &moduleEntry32)) {
             do {
-                if (strcmp(moduleEntry32.szModule, moduleName) == 0) {
+                if (strcmp(moduleEntry32.szModule, moduleName.c_str()) == 0) {
                     moduleBaseAddress = (DWORD64) moduleEntry32.modBaseAddr;
                     break;
                 }
