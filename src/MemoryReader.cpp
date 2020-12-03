@@ -88,6 +88,16 @@ public:
     }
 
 public:
+    bool ReadBoolean(DWORD64 pointerAddress) {
+        bool response;
+        if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
+            printf("Error: Failed to read a DWORD from '%lx' memory address.\n", pointerAddress);
+            throw -1;
+        }
+        return response;
+    }
+
+public:
     DWORDLONG ReadDWORD(DWORD64 pointerAddress) {
         DWORDLONG response;
         if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
@@ -123,6 +133,11 @@ public:
 
 public:
     void WriteInt(DWORD64 pointerAddress, int value) {
+        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
+public:
+    void WriteBoolean(DWORD64 pointerAddress, bool value) {
         WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
     }
 
