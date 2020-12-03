@@ -79,6 +79,14 @@ private:
         return yearPointer + 0x2C;
     }
 
+private:
+    DWORD64 GetPausePointer() {
+        DWORD64 yearPointer = GetWin64Shipping();
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x148);
+        return yearPointer + 0x4B3;
+    }
+
 public:
     float GetMoney() {
         DWORD64 moneyPointer = GetMoneyPointer();
@@ -113,6 +121,24 @@ public:
     int GetMonth() {
         DWORD64 yearPointer = GetMonthPointer();
         return memoryReader->ReadInt(yearPointer);
+    }
+
+public:
+    void SetPaused(bool paused) {
+        DWORD64 pausePointer = GetPausePointer();
+        return memoryReader->WriteBoolean(pausePointer, !paused);
+    }
+
+public:
+    void TogglePause() {
+        DWORD64 pausePointer = GetPausePointer();
+        return memoryReader->WriteBoolean(pausePointer, IsPaused());
+    }
+
+public:
+    bool IsPaused() {
+        DWORD64 pausePointer = GetPausePointer();
+        return !memoryReader->ReadBoolean(pausePointer);
     }
 
 };
