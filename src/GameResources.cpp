@@ -69,6 +69,16 @@ private:
         return yearPointer + 0x28;
     }
 
+
+private:
+    DWORD64 GetMonthPointer() {
+        DWORD64 yearPointer = GetWin64Shipping();
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x148);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x508);
+        return yearPointer + 0x2C;
+    }
+
 public:
     float GetMoney() {
         DWORD64 moneyPointer = GetMoneyPointer();
@@ -96,6 +106,12 @@ public:
 public:
     int GetYear() {
         DWORD64 yearPointer = GetYearPointer();
+        return memoryReader->ReadInt(yearPointer);
+    }
+
+public:
+    int GetMonth() {
+        DWORD64 yearPointer = GetMonthPointer();
         return memoryReader->ReadInt(yearPointer);
     }
 
