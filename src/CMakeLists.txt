@@ -7,6 +7,6 @@ add_executable(
         tropico-6-memory-reader
         main.cpp
 
-        MemoryReader.cpp
-        GameResources.cpp
+        game/MemoryReader.cpp
+        game/GameResources.cpp
 )

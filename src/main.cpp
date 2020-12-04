@@ -1,5 +1,5 @@
 #include <iostream>
-#include "GameResources.cpp"
+#include "game/GameResources.cpp"
 
 GameResources *gameResources;
 
