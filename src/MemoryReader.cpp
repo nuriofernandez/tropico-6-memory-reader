@@ -96,8 +96,8 @@ public:
     }
 
 public:
-    DWORDLONG ReadDWORD(DWORD64 pointerAddress) {
-        DWORDLONG response;
+    DWORD64 ReadDWORD(DWORD64 pointerAddress) {
+        DWORD64 response;
         if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
             printf("Error: Failed to read a DWORD from '%lx' memory address.\n", pointerAddress);
             throw -1;
