@@ -37,12 +37,9 @@ private:
 private:
     DWORD64 GetPopulationPointer() {
         DWORD64 populationPointer = GetWin64Shipping();
-        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x03C530D0);
-        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x30);
-        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x8F0);
-        populationPointer = memoryReader->ReadDWORD(populationPointer + 0xF08);
-        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x350);
-        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x230);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x0382BE80);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x0);
+        populationPointer = memoryReader->ReadDWORD(populationPointer + 0x360);
         populationPointer = memoryReader->ReadDWORD(populationPointer + 0x9D0);
         return populationPointer + 0xDBC;
     }
