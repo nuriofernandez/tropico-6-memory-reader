@@ -68,77 +68,11 @@ private:
     }
 
 public:
-    int ReadInt(DWORD64 pointerAddress) {
-        int response;
-        if (!ReadProcessMemory(process, (LPVOID) pointerAddress, &response, sizeof(response), NULL)) {
-            printf("Error: Failed to read a int from '%lx' memory address.\n", pointerAddress);
-            throw -1;
-        }
-        return response;
-    }
-
-public:
-    float ReadFloat(DWORD64 pointerAddress) {
-        float response;
-        if (!ReadProcessMemory(process, (LPVOID) pointerAddress, &response, sizeof(response), NULL)) {
-            printf("Error: Failed to read a float from '%lx' memory address.\n", pointerAddress);
-            throw -1;
-        }
-        return response;
-    }
-
-public:
-    bool ReadBoolean(DWORD64 pointerAddress) {
-        bool response;
-        if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
-            printf("Error: Failed to read a DWORD from '%lx' memory address.\n", pointerAddress);
-            throw -1;
-        }
-        return response;
-    }
-
-public:
-    DWORDLONG ReadDWORD(DWORD64 pointerAddress) {
-        DWORDLONG response;
-        if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
-            printf("Error: Failed to read a DWORD from '%lx' memory address.\n", pointerAddress);
-            throw -1;
-        }
-        return response;
-    }
-
-public:
-    uint8_t ReadUint8(DWORD64 pointerAddress) {
-        uint8_t response;
-        if (!ReadProcessMemory(process, (LPVOID) pointerAddress, &response, sizeof(response), NULL)) {
-            printf("Error: Failed to read a int8 from '%lx' memory address.\n", pointerAddress);
-            throw -1;
-        }
-        return response;
-    }
-
-public:
     string GetActiveWindowTitle() {
         char wnd_title[256];
         HWND hwnd = GetForegroundWindow();
         GetWindowText(hwnd, wnd_title, sizeof(wnd_title));
         return wnd_title;
-    }
-
-public:
-    void WriteFloat(DWORD64 pointerAddress, float value) {
-        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
-    }
-
-
-public:
-    void WriteInt(DWORD64 pointerAddress, int value) {
-        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
-    }
-
-public:
-    void WriteBoolean(DWORD64 pointerAddress, bool value) {
-        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
     }
 
 public:
@@ -159,6 +93,71 @@ public:
         }
         CloseHandle(hSnapshot);
         return moduleBaseAddress;
+    }
+
+public:
+    DWORDLONG ReadDWORD(DWORD64 pointerAddress) {
+        DWORDLONG response;
+        if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
+            printf("Error: Failed to read a DWORD from '%lx' memory address.\n", pointerAddress);
+            throw -1;
+        }
+        return response;
+    }
+
+public:
+    bool ReadBoolean(DWORD64 pointerAddress) {
+        bool response;
+        if (!ReadProcessMemory(process, (void *) pointerAddress, &response, sizeof(response), NULL)) {
+            printf("Error: Failed to read a DWORD from '%lx' memory address.\n", pointerAddress);
+            throw -1;
+        }
+        return response;
+    }
+
+public:
+    void WriteBoolean(DWORD64 pointerAddress, bool value) {
+        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
+public:
+    int ReadInt(DWORD64 pointerAddress) {
+        int response;
+        if (!ReadProcessMemory(process, (LPVOID) pointerAddress, &response, sizeof(response), NULL)) {
+            printf("Error: Failed to read a int from '%lx' memory address.\n", pointerAddress);
+            throw -1;
+        }
+        return response;
+    }
+
+public:
+    void WriteInt(DWORD64 pointerAddress, int value) {
+        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
+public:
+    float ReadFloat(DWORD64 pointerAddress) {
+        float response;
+        if (!ReadProcessMemory(process, (LPVOID) pointerAddress, &response, sizeof(response), NULL)) {
+            printf("Error: Failed to read a float from '%lx' memory address.\n", pointerAddress);
+            throw -1;
+        }
+        return response;
+    }
+
+public:
+    void WriteFloat(DWORD64 pointerAddress, float value) {
+        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
+public:
+    uint8_t ReadUint8(DWORD64 pointerAddress) {
+        uint8_t response;
+        if (!ReadProcessMemory(process, (LPVOID) pointerAddress, &response, sizeof(response), NULL)) {
+            printf("Error: Failed to read a int8 from '%lx' memory address.\n", pointerAddress);
+            throw -1;
+        }
+        return response;
     }
 
 };
