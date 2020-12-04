@@ -26,13 +26,11 @@ private:
 private:
     DWORD64 GetMoneyPointer() {
         DWORD64 moneyPointer = GetWin64Shipping();
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x037B4A08);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C6DFC0);
         moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x8);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x0);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x90);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x108);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xA28);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x340);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x8);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x100);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xE0);
         return moneyPointer + 0x9D8;
     }
 
