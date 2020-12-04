@@ -63,7 +63,6 @@ private:
         return yearPointer + 0x28;
     }
 
-
 private:
     DWORD64 GetMonthPointer() {
         DWORD64 yearPointer = GetWin64Shipping();
