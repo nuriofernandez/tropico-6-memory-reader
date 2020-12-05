@@ -22,7 +22,8 @@ int main() {
         float tmpSupport = support;
         int tmpYear = year;
         int tmpMonth = month;
-        int tmpPaused = paused;
+        bool tmpPaused = paused;
+
         money = gameResources->GetMoney();
         population = gameResources->GetPopulation();
         support = gameResources->GetSupport();
