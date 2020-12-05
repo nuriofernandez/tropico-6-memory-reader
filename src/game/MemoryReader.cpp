@@ -160,4 +160,9 @@ public:
         return response;
     }
 
+public:
+    uint8_t WriteUint8(DWORD64 pointerAddress, uint8_t value) {
+        WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
 };
