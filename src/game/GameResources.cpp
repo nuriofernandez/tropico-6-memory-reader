@@ -62,6 +62,18 @@ public:
     }
 
 public:
+    int GetMandateTime() {
+        DWORD64 mandatePointer = gamePointers->GetMandateTime();
+        return memoryReader->ReadInt(mandatePointer);
+    }
+
+public:
+    void SetMandateTime(int mandate) {
+        DWORD64 mandatePointer = gamePointers->GetMandateTime();
+        memoryReader->WriteInt(mandatePointer, mandate);
+    }
+
+public:
     void SetPaused(bool paused) {
         DWORD64 pausePointer = gamePointers->GetPause();
         return memoryReader->WriteBoolean(pausePointer, !paused);

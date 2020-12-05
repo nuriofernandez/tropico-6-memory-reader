@@ -66,6 +66,15 @@ public:
     }
 
 public:
+    DWORD64 GetMandateTime() {
+        DWORD64 yearPointer = GetWin64Shipping();
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C0A528);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x6C0);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0xD48);
+        return yearPointer + 0x350;
+    }
+
+public:
     DWORD64 GetPause() {
         DWORD64 yearPointer = GetWin64Shipping();
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
