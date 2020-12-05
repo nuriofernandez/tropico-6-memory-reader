@@ -86,7 +86,7 @@ public:
     }
 
 public:
-    DWORD64 GetPause() {
+    DWORD64 GetGameSpeed() {
         DWORD64 yearPointer = GetWin64Shipping();
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x148);

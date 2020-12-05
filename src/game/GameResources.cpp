@@ -80,21 +80,30 @@ public:
     }
 
 public:
-    void SetPaused(bool paused) {
-        DWORD64 pausePointer = gamePointers->GetPause();
-        return memoryReader->WriteBoolean(pausePointer, !paused);
+    uint8_t GetGameSpeed() {
+        DWORD64 pausePointer = gamePointers->GetGameSpeed();
+        return memoryReader->ReadUint8(pausePointer);
     }
 
 public:
-    void TogglePause() {
-        DWORD64 pausePointer = gamePointers->GetPause();
-        return memoryReader->WriteBoolean(pausePointer, IsPaused());
+    void SetGameSpeed(uint8_t speed) {
+        DWORD64 pausePointer = gamePointers->GetGameSpeed();
+        memoryReader->WriteUint8(pausePointer, speed);
     }
 
 public:
     bool IsPaused() {
-        DWORD64 pausePointer = gamePointers->GetPause();
-        return !memoryReader->ReadBoolean(pausePointer);
+        return GetGameSpeed() == 0;
+    }
+
+public:
+    void SetPaused(bool paused) {
+        SetGameSpeed(paused ? 0 : 1);
+    }
+
+public:
+    void TogglePause() {
+        SetPaused(!IsPaused());
     }
 
 };
