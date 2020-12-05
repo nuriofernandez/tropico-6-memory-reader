@@ -44,6 +44,12 @@ public:
     }
 
 public:
+    float GetSupport() {
+        DWORD64 supportPointer = gamePointers->GetSupport();
+        return memoryReader->ReadFloat(supportPointer);
+    }
+
+public:
     int GetYear() {
         DWORD64 yearPointer = gamePointers->GetYear();
         return memoryReader->ReadInt(yearPointer);

@@ -38,6 +38,16 @@ public:
     }
 
 public:
+    DWORD64 GetSupport() {
+        DWORD64 moneyPointer = GetWin64Shipping();
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C70440);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x188);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xB0);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x330);
+        return moneyPointer + 0x510;
+    }
+
+public:
     DWORD64 GetYear() {
         DWORD64 yearPointer = GetWin64Shipping();
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
