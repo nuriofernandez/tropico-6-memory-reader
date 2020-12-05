@@ -40,10 +40,10 @@ public:
 public:
     DWORD64 GetSupport() {
         DWORD64 moneyPointer = GetWin64Shipping();
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C70440);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x188);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xB0);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C530D0);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x30);
         moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x330);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xD48);
         return moneyPointer + 0x510;
     }
 
