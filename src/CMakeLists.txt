@@ -9,4 +9,5 @@ add_executable(
 
         game/MemoryReader.cpp
         game/GameResources.cpp
+        game/GamePointers.cpp
 )
