@@ -68,6 +68,12 @@ public:
     }
 
 public:
+    int GetColonialMandateTime() {
+        DWORD64 mandatePointer = gamePointers->GetColonialMandateTime();
+        return memoryReader->ReadInt(mandatePointer);
+    }
+
+public:
     void SetMandateTime(int mandate) {
         DWORD64 mandatePointer = gamePointers->GetMandateTime();
         memoryReader->WriteInt(mandatePointer, mandate);

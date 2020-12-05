@@ -75,6 +75,17 @@ public:
     }
 
 public:
+    DWORD64 GetColonialMandateTime() {
+        DWORD64 yearPointer = GetWin64Shipping();
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C6DFC0);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x8);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x8);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0x1B0);
+        yearPointer = memoryReader->ReadDWORD(yearPointer + 0xE0);
+        return yearPointer + 0xDF0;
+    }
+
+public:
     DWORD64 GetPause() {
         DWORD64 yearPointer = GetWin64Shipping();
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x03C70440);
