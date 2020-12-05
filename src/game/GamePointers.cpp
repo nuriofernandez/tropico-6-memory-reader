@@ -10,7 +10,6 @@ public:
         this->memoryReader = memoryReader;
     }
 
-
 public:
     DWORD64 GetWin64Shipping() {
         return memoryReader->GetModuleBaseAddress("Tropico6-Win64-Shipping.exe");
@@ -82,7 +81,6 @@ public:
         yearPointer = memoryReader->ReadDWORD(yearPointer + 0x148);
         return yearPointer + 0x4B3;
     }
-
 
 public:
     DWORD64 GetSecondPlayerMoney() {
