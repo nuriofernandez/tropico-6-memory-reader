@@ -49,6 +49,9 @@ public:
         return memoryReader->ReadInt(unemploymentPointer);
     }
 
+/**
+ * This method will return the number of homeless citizens of the last time that Almanac were open.
+ */
 public:
     int GetHomelessCitizens() {
         DWORD64 homelessPointer = gamePointers->GetHomelessCitizens();
