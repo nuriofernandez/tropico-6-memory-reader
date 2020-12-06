@@ -44,6 +44,12 @@ public:
     }
 
 public:
+    int GetUnemployedCitizens() {
+        DWORD64 unemploymentPointer = gamePointers->GetUnemployedCitizens();
+        return memoryReader->ReadInt(unemploymentPointer);
+    }
+
+public:
     float GetSupport() {
         DWORD64 supportPointer = gamePointers->GetSupport();
         return memoryReader->ReadFloat(supportPointer);

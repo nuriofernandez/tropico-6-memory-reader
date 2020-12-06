@@ -37,6 +37,16 @@ public:
     }
 
 public:
+    DWORD64 GetUnemployedCitizens() {
+        DWORD64 unemploymentPointer = GetWin64Shipping();
+        unemploymentPointer = memoryReader->ReadDWORD(unemploymentPointer + 0x03C70440);
+        unemploymentPointer = memoryReader->ReadDWORD(unemploymentPointer + 0x630);
+        unemploymentPointer = memoryReader->ReadDWORD(unemploymentPointer + 0x8);
+        unemploymentPointer = memoryReader->ReadDWORD(unemploymentPointer + 0x1A0);
+        return unemploymentPointer + 0xE18;
+    }
+
+public:
     DWORD64 GetSupport() {
         DWORD64 moneyPointer = GetWin64Shipping();
         moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C530D0);
