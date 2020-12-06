@@ -50,6 +50,12 @@ public:
     }
 
 public:
+    int GetHomelessCitizens() {
+        DWORD64 homelessPointer = gamePointers->GetHomelessCitizens();
+        return memoryReader->ReadInt(homelessPointer);
+    }
+
+public:
     float GetSupport() {
         DWORD64 supportPointer = gamePointers->GetSupport();
         return memoryReader->ReadFloat(supportPointer);
