@@ -15,6 +15,7 @@ int main() {
     int month = -1;
     bool paused;
     int unemployment = -1;
+    int homeless = -1;
 
     while (true) {
         Sleep(500);
@@ -25,6 +26,7 @@ int main() {
         int tmpMonth = month;
         bool tmpPaused = paused;
         int tmpUnemployment = unemployment;
+        int tmpHomeless = homeless;
 
         money = gameResources->GetMoney();
         population = gameResources->GetPopulation();
@@ -33,6 +35,7 @@ int main() {
         month = gameResources->GetMonth();
         paused = gameResources->IsPaused();
         unemployment = gameResources->GetUnemployedCitizens();
+        homeless = gameResources->GetHomelessCitizens();
 
         if (money != tmpMoney) printf("You have $%f.\n", money);
         if (population != tmpPopulation) printf("You have a population of %d tropicans.\n", population);
@@ -41,6 +44,7 @@ int main() {
         if (month != tmpMonth) printf("You are in the month %d.\n", month);
         if (paused != tmpPaused) printf("You game %s paused.\n", paused ? "is" : "is not");
         if (unemployment != tmpUnemployment) printf("You have %d unemployed tropicans.\n", unemployment);
+        if (homeless != tmpHomeless) printf("You have %d homeless tropicans.\n", homeless);
     }
     return 0;
 }
