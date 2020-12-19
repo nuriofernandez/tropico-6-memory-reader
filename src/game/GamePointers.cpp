@@ -18,10 +18,10 @@ public:
 public:
     DWORD64 GetMoney() {
         DWORD64 moneyPointer = GetWin64Shipping();
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C6DFC0);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03CFF9C0);
         moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x8);
         moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x8);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x100);
+        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xE0);
         moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0xE0);
         return moneyPointer + 0x9D8;
     }
