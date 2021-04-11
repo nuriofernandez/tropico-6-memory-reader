@@ -1,11 +1,11 @@
 #include <iostream>
 #include "game/GameResources.cpp"
 
-GameResources *gameResources;
+GameResources *tropico;
 
 int main() {
     printf("Loading...\n");
-    gameResources = new GameResources();
+    tropico = new GameResources();
     printf("Successfully injected! \\@.@/\n");
 
     float money = -1;
@@ -28,14 +28,14 @@ int main() {
         int tmpUnemployment = unemployment;
         int tmpHomeless = homeless;
 
-        money = gameResources->GetMoney();
-        population = gameResources->GetPopulation();
-        support = gameResources->GetSupport();
-        year = gameResources->GetYear();
-        month = gameResources->GetMonth();
-        paused = gameResources->IsPaused();
-        unemployment = gameResources->GetUnemployedCitizens();
-        homeless = gameResources->GetHomelessCitizens();
+        money = tropico->GetMoney();
+        //population = tropico->GetPopulation();
+        //support = tropico->GetSupport();
+        //year = tropico->GetYear();
+        //month = tropico->GetMonth();
+        //paused = tropico->IsPaused();
+        //unemployment = tropico->GetUnemployedCitizens();
+        //homeless = tropico->GetHomelessCitizens();
 
         if (money != tmpMoney) printf("You have $%f.\n", money);
         if (population != tmpPopulation) printf("You have a population of %d tropicans.\n", population);
