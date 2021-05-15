@@ -17,13 +17,17 @@ public:
 
 public:
     DWORD64 GetMoney() {
-        DWORD64 moneyPointer = GetWin64Shipping();
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x03C04680);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x28);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x8E8);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x10);
-        moneyPointer = memoryReader->ReadDWORD(moneyPointer + 0x230);
-        return moneyPointer + 0x9D8;
+        DWORD64 baseAddress = GetWin64Shipping();
+        DWORD64 offsets[] = {0x03C04680, 0x28, 0x8E8, 0x10, 0x230};
+
+        // Navigate memory pointers
+        DWORD64 previousPointer = baseAddress;
+        for (DWORD64 offset : offsets) {
+            previousPointer = memoryReader->ReadDWORD(previousPointer + offset);
+        }
+
+        // Add final address offset
+        return previousPointer + 0x9D8;
     }
 
 public:
