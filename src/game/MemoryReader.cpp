@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <psapi.h>
 #include <tlhelp32.h>
+#include <vector>
 
 using namespace std;
 
@@ -163,6 +164,18 @@ public:
 public:
     uint8_t WriteUint8(DWORD64 pointerAddress, uint8_t value) {
         WriteProcessMemory(process, (void *) pointerAddress, &value, sizeof(value), NULL);
+    }
+
+public:
+    DWORD64 NavigatePointers(DWORD64 baseAddress, const vector<DWORD64> &offsets, DWORD64 finalOffset) {
+        // Navigate memory pointers
+        DWORD64 resultPointer = baseAddress;
+        for (DWORD64 offset : offsets) {
+            resultPointer = ReadDWORD(resultPointer + offset);
+        }
+
+        // Add final address offset
+        return resultPointer + finalOffset;
     }
 
 };
